@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Aventuras de los Chads - Archivo Oficial 4° Año</title>
+    <style>
+        :root {
+            --oro: #ffcc00;
+            --rojo: #ff4757;
+            --fondo: #0f0f13;
+            --tarjeta: #1a1a22;
+            --texto: #f1f2f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--fondo);
+            background-image: radial-gradient(circle at top, #1f1f2e 0%, #0f0f13 70%);
+            color: var(--texto);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* ENCABEZADO ÉPICO */
+        header {
+            padding: 50px 20px 30px 20px;
+            background: linear-gradient(180deg, rgba(255,204,0,0.12) 0%, rgba(15,15,19,0) 100%);
+            border-bottom: 2px solid #2a2a35;
+            margin-bottom: 40px;
+        }
+
+        .badge-oficial {
+            display: inline-block;
+            background-color: var(--rojo);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.5);
+        }
+
+        h1 {
+            color: var(--oro);
+            font-size: 2.8rem;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .intro-box {
+            max-width: 780px;
+            margin: 20px auto 0 auto;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            border-radius: 14px;
+            padding: 20px 25px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #d1d8e0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .sub-intro {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255, 204, 0, 0.3);
+            color: var(--oro);
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* SECCIONES */
+        .seccion-titulo {
+            font-size: 2rem;
+            color: #ffffff;
+            margin: 50px 0 30px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .seccion-titulo span {
+            color: var(--oro);
+            border-bottom: 3px solid var(--oro);
+            padding-bottom: 5px;
+        }
+
+        /* GRILLA DE TARJETAS */
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .tarjeta {
+            background-color: var(--tarjeta);
+            border: 1px solid #2f3542;
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-6px);
+            border-color: var(--oro);
+        }
+
+        .etiqueta {
+            align-self: flex-start;
+            background: linear-gradient(90deg, var(--oro), #ff9f1a);
+            color: #000;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .etiqueta-video {
+            background: linear-gradient(90deg, var(--rojo), #ff6b81);
+            color: #fff;
+        }
+
+        .tarjeta img, .tarjeta video {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #2f3542;
+            background-color: #000;
+        }
+
+        .tarjeta video {
+            object-fit: contain;
+        }
+
+        .narracion {
+            margin-top: 16px;
+            font-size: 1.02rem;
+            line-height: 1.55;
+            background-color: #242430;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--oro);
+            text-align: left;
+            color: #f1f2f6;
+        }
+
+        .narracion b {
+            color: var(--oro);
+        }
+
+        /* BOTONES DE TIEMPO PARA VIDEOS */
+        .controles-tiempo {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .btn-tiempo {
+            background-color: #2f3542;
+            color: var(--oro);
+            border: 1px solid var(--oro);
+            padding: 7px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .btn-tiempo:hover {
+            background-color: var(--oro);
+            color: #000;
+        }
+
+        footer {
+            margin-top: 70px;
+            padding: 30px;
+            background-color: #09090c;
+            border-top: 1px solid #2a2a35;
+            color: #747d8c;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="badge-oficial">📁 Archivo Confidencial - 4° Año</div>
+        <h1>🔥 Las Aventuras de los Chads 🔥</h1>
+        <div class="intro-box">
+            Bienvenidos al archivo oficial de 4° año, creado y dirigido por el camarógrafo del grupo. Si alguna vez te preguntaste qué pasa cuando juntás a los pibes en Plaza Mataderos o en un día libre en el colegio, acá tenés todas las pruebas en fotos y videos. Un documental sin filtro para recordar las mejores secuencias antes de pasar a 5° año.
+            <div class="sub-intro">
+                Bienvenidos, hoy vamos a analizar la fauna local: los Chads. Desde las batallas por comida en Plaza Mataderos hasta las trincheras del aula. Prepárense, porque lo que viene es una locura para abajo.
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: LAS 22 FOTOS                    -->
+    <!-- ========================================== -->
+    <h2 class="seccion-titulo">📸 <span>Galería Documental</span></h2>
+
+    <div class="contenedor">
+
+        <!-- FOTO 1 -->
+        <div class="tarjeta">
+            <span class="etiqueta">El Saqueo</span>
+            <img src="Foto1.jpeg" onerror="this.onerror=null; this.src='Foto1.jpg';" alt="Aaron revisando la mochila">
+            <div class="narracion">
+                Empezamos el documental en Plaza Mataderos. Acá observamos a un ejemplar de <b>Aaron</b> en estado salvaje, aplicando su instinto de supervivencia para saquear una mochila ajena en busca de comida. No tiene vergüenza ni remordimiento.
+            </div>
+        </div>
+
+        <!-- FOTO 2 -->
+        <div class="tarjeta">
+            <span class="etiqueta">La Retirada</span>
+            <img src="Foto2.jpeg" onerror="this.onerror=null; this.src='Foto2.jpg';" alt="Aaron caminando de espaldas">
+            <div class="narracion">
+                Una vez asegurado el botín, <b>Aaron</b> emprende la retirada táctica. Miren esa postura de jefe final después de manotear las papas fritas (o unos buenos chizitos) del paquete ajeno.
+            </div>
+        </div>
+
+        <!-- FOTO 3 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Leyenda Urbana</span>
+            <img src="Foto3.jpeg" onerror="this.onerror=null; this.src='Foto3.jpg';" alt="Aaron alejándose por el camino">
+            <div class="narracion">
+                Se aleja lentamente hacia la civilización. Cuenta la leyenda que si decís 'hay papas fritas gratis' tres veces en Plaza Mataderos, se da vuelta automáticamente.
+            </div>
+        </div>
+
+        <!-- FOTO 4 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Modo Sigilo</span>
+            <img src="Foto4.jpeg" onerror="this.onerror=null; this.src='Foto4.jpg';" alt="Aaron de espaldas más cerca">
+            <div class="narracion">
+                Último registro de la espalda de <b>Aaron</b> antes de que active el modo sigilo y desaparezca entre los árboles con el morfi.
+            </div>
+        </div>
+
+        <!-- FOTO 5 -->
+        <div class="tarjeta">
+            <span class="etiqueta">El Cómplice</span>
+            <img src="Foto5.jpeg" onerror="this.onerror=null; this.src='Foto5.jpg';" alt="Fretes atrás comiendo y Alex adelante">
+            <div class="narracion">
+                ¡Momento histórico! Mientras <b>Alex</b> mira su mochila calculando qué le falta, atrás aparece un <b>Fretes</b> salvaje comiéndose las pruebas del delito con una sonrisa de impunidad total.
+            </div>
+        </div>
+
+        <!-- FOTO 6 -->
+        <div class="tarjeta">
+            <span class="etiqueta">La Traición</span>
+            <img src="Foto6.jpeg" onerror="this.onerror=null; this.src='Foto6.jpg';" alt="Alex tentado de risa y Aaron metiendo mano">
+            <div class="narracion">
+                La traición es total: <b>Alex</b> ya no aguanta más y se tienta de la risa viendo cómo <b>Aaron</b> vuelve a meter la mano hasta el fondo de la mochila como si fuera un agujero negro.
+            </div>
+        </div>
+
+        <!-- FOTO 7 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Crisis Existencial</span>
+            <img src="Foto7.jpeg" onerror="this.onerror=null; this.src='Foto7.jpg';" alt="Alex resignado mirando la nada">
+            <div class="narracion">
+                El momento exacto en el que a <b>Alex</b> se le reinicia el Windows. Con la mochila abierta y vacía, se pregunta en qué momento eligió a estos amigos.
+            </div>
+        </div>
+
+        <!-- FOTO 8 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Día Libre y Brawl Stars</span>
+            <img src="Foto8.jpeg" onerror="this.onerror=null; this.src='Foto8.jpg';" alt="Alex y Thiago con el celu">
+            <div class="narracion">
+                Cambiamos de hábitat: día libre en el colegio por paro docente. A la izquierda <b>Alex</b> y a la derecha <b>Thiago</b>, en máxima concentración. Parece que están estudiando, pero están carreando una partida de Brawl Stars a muerte.
+            </div>
+        </div>
+
+        <!-- FOTO 9 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Taller de Ilusionismo</span>
+            <img src="Foto9.jpeg" onerror="this.onerror=null; this.src='Foto9.jpg';" alt="Fretes y Emmanuel haciendo magia">
+            <div class="narracion">
+                Aprovechando la hora libre, se armó el taller de ilusionismo con <b>Fretes</b>, <b>Emmanuel</b> y yo detrás de cámara tirando magia con mis cartas buenas. Miren a Emmanuel intentando hacer un truco con ese mazo todo hecho pelota que ya pide jubilación.
+            </div>
+        </div>
+
+        <!-- FOTO 10 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Misión Secundaria</span>
+            <img src="Foto10.jpeg" onerror="this.onerror=null; this.src='Foto10.jpg';" alt="Aaron iluminado en el aula a oscuras">
+            <div class="narracion">
+                Apagamos todas las luces del aula vacía y quedó <b>Aaron</b> en el medio, iluminado únicamente por un rayo de sol como si estuviera por darnos una misión secundaria o fuera el villano final del colegio.
+            </div>
+        </div>
+
+        <!-- FOTO 11 -->
+        <div class="tarjeta">
+            <span class="etiqueta">El Crimen en la Biblioteca</span>
+            <img src="Foto11.jpeg" onerror="this.onerror=null; this.src='Foto11.jpg';" alt="Fretes barriendo en la biblioteca">
+            <div class="narracion">
+                ¡Ilegalísimo! Se pusieron a comer sándwiches de miga adentro de la biblioteca (donde está recontra prohibido comer) y llenaron todo de migas. Aunque <b>Fretes</b> juraba que otro había revuelto el paquete, la presión social del grupo funcionó y terminó agarrando la escoba y la palita.
+            </div>
+        </div>
+
+        <!-- FOTO 12 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Sale ese Truco</span>
+            <img src="Foto12.jpeg" onerror="this.onerror=null; this.src='Foto12.jpg';" alt="Ronda de Truco en los pufs">
+            <div class="narracion">
+                Seguimos de paro y sale ese Truco sagrado en los pufs para pasar el rato. De izquierda a derecha: <b>Thiago Mamani</b>, <b>Thiago Fretes</b>, <b>Alex</b> y <b>Aaron</b> tirando señas y mintiendo descaradamente con un 4 de copas.
+            </div>
+        </div>
+
+        <!-- FOTO 13 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Ascensión Divina</span>
+            <img src="Foto13.png" onerror="this.onerror=null; this.src='Foto13.jpg';" alt="Estampita de San Alex">
+            <div class="narracion">
+                Cansado de que le saqueen la mochila en la plaza, Alex ascendió espiritualmente y se convirtió en <b>San Alex</b>, el patrono de las meriendas robadas. Récenle para aprobar todas las materias a fin de año.
+            </div>
+        </div>
+
+        <!-- FOTO 14 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Llamada Secreta (Parte 1)</span>
+            <img src="Foto14.png" onerror="this.onerror=null; this.src='Foto14.jpg';" alt="Escondido hablando con la novia - Parte 1">
+            <div class="narracion">
+                Las cámaras de seguridad captan a un soldado escondido entre la campera y la escoba al lado de la pecera. Está en llamada con la guacha, tratando de remar una relación más inestable que el Wi-Fi del colegio.
+            </div>
+        </div>
+
+        <!-- FOTO 15 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Llamada Secreta (Parte 2)</span>
+            <img src="Foto15.png" onerror="this.onerror=null; this.src='Foto15.jpg';" alt="Zoom a la llamada - Parte 2">
+            <div class="narracion">
+                El zoom táctico confirma que sigue negociando por teléfono. No sabemos si están todo bien o al borde del colapso, pero el camuflaje entre los libros y el pizarrón para tener privacidad es 10/10.
+            </div>
+        </div>
+
+        <!-- FOTO 16 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Modo Aracnídico</span>
+            <img src="Foto16.jpeg" onerror="this.onerror=null; this.src='Foto16.jpg';" alt="Intentando trepar la pista de skate">
+            <div class="narracion">
+                Cambiamos al skatepark. Acá vemos a nuestro héroe intentando escalar la rampa en cuatro patas, con la gracia del Hombre Araña después de tres mates. Y para colmo, arriba están todos quietos como estatuas, mirándolo sin hacer un carajo para ayudarlo.
+            </div>
+        </div>
+
+        <!-- FOTO 17 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Solidaridad Inexistente</span>
+            <img src="Foto17.jpeg" onerror="this.onerror=null; this.src='Foto17.jpg';" alt="Fabián tentado de risa en el fondo">
+            <div class="narracion">
+                Mientras el tipo sigue peleando contra la gravedad en el piso, aparece <b>Fabián</b> (con la casaca azul) desde atrás. No viene a ayudar, viene a ver el show. Tiene esa cara de mirá qué boludo mientras se contiene la risa viendo cómo su amigo se humilla.
+            </div>
+        </div>
+
+        <!-- FOTO 18 -->
+        <div class="tarjeta">
+            <span class="etiqueta">El Rescate de Pobre</span>
+            <img src="Foto18.jpeg" onerror="this.onerror=null; this.src='Foto18.jpg';" alt="Resbalando hacia el charco">
+            <div class="narracion">
+                Situación crítica: empieza a deslizarse hacia el famoso charco de la plaza. <b>Fabián</b> se acerca supuestamente a empujarlo hacia arriba, pero desde el borde le tiran una mano que no llega ni en sueños. Es más probable que lo dejen caer que salvarlo.
+            </div>
+        </div>
+
+        <!-- FOTO 19 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Aceptando el Lag</span>
+            <img src="Foto19.jpeg" onerror="this.onerror=null; this.src='Foto19.jpg';" alt="Rendición total en la rampa">
+            <div class="narracion">
+                Se le acabó la batería. Quedó planchado contra el cemento, aceptando su destino de vivir ahí abajo por siempre. Mientras tanto, <b>Fabián</b> le agarra el pie solo para evitar que termine nadando en el charco, porque si no, se moja los zapatos.
+            </div>
+        </div>
+
+        <!-- FOTO 20 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Ingeniería de Parrillero</span>
+            <img src="Foto20.jpeg" onerror="this.onerror=null; this.src='Foto20.jpg';" alt="Fabián modo tabla humana">
+            <div class="narracion">
+                ¡El clímax! Como no trajeron tabla, <b>Fabián</b> activó el modo tabla humana. Se queda duro como un palo en el borde mientras los pibes le sostienen las piernas para que no se parta en dos. Esto no es deporte, es supervivencia pura.
+            </div>
+        </div>
+
+        <!-- FOTO 21 -->
+        <div class="tarjeta">
+            <span class="etiqueta">El NPC Conectado</span>
+            <img src="Foto21.jpeg" onerror="this.onerror=null; this.src='Foto21.jpg';" alt="Caminando con el celu entre los árboles">
+            <div class="narracion">
+                En medio del bosque captamos a un ejemplar caminando en automático, pegado al celu como si le hubieran soldado las manos. Si no le gritás fuerte, se choca de frente con un árbol y te mira como si vos fueras el alienígena.
+            </div>
+        </div>
+
+        <!-- FOTO 22 -->
+        <div class="tarjeta">
+            <span class="etiqueta">Espionaje de Barrio</span>
+            <img src="Foto22.jpeg" onerror="this.onerror=null; this.src='Foto22.jpg';" alt="Espiando por la puerta azul">
+            <div class="narracion">
+                Cerramos con el nivel máximo de curiosidad mórbida: encapuchado, inclinado a 90 grados y el ojo pegado a la cerradura de una puerta random. Ni el espía más experimentado se anima a tanto solo para ver qué hacen adentro. Pura esencia 4° año.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECCIÓN 2: LOS 7 VIDEOS (KAK1.mp4 a KAK7.mp4)         -->
+    <!-- ===================================================== -->
+    <h2 class="seccion-titulo">🎬 <span>Evidencia en Video</span></h2>
+
+    <div class="contenedor">
+
+        <!-- KAK1.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">El Tren Humano</span>
+            <video id="vid1" controls preload="metadata" src="KAK1.mp4#t=50,270"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid1', 50, 90)">▶ Rodando como troncos (00:50 - 01:30)</button>
+                <button class="btn-tiempo" onclick="irASegundo('vid1', 250, 270)">▶ El Gusano Humano (04:10 - 04:30)</button>
+            </div>
+            <div class="narracion">
+                Bienvenidos a los fenómenos paranormales de la plaza: primero vemos a <b>Pablo</b> y la banda rodando por la barranca como croquetas, y después se fusionan agarrándose de los tobillos para formar un gusano humano de cuatro metros en el pasto.
+            </div>
+        </div>
+
+        <!-- KAK2.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">El Pozo Sin Salida</span>
+            <video id="vid2" controls preload="metadata" src="KAK2.mp4#t=4,52"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid2', 4, 25)">▶ Atrapado en el pozo (00:04 - 00:25)</button>
+                <button class="btn-tiempo" onclick="irASegundo('vid2', 42, 52)">▶ Desplome al piso (00:42 - 00:52)</button>
+            </div>
+            <div class="narracion">
+                Entrar al pozo del skatepark era fácil, lo difícil era salir. Acá vemos el intento fallido de escape y cómo otro soldado intenta trepar y termina desparramado en el cemento mientras arriba miran el espectáculo.
+            </div>
+        </div>
+
+        <!-- KAK3.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">Solidaridad en Vivo</span>
+            <video id="vid3" controls preload="metadata" src="KAK3.mp4#t=0,4"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid3', 0, 4)">▶ Ver clip completo (00:00 - 00:04)</button>
+            </div>
+            <div class="narracion">
+                Cuatro segundos de pura tensión donde nuestro héroe queda congelado a mitad de la rampa mientras <b>Fabián</b> posa atrás con una sonrisa de oreja a oreja.
+            </div>
+        </div>
+
+        <!-- KAK4.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">El Trauma del Rey León</span>
+            <video id="vid4" controls preload="metadata" src="KAK4.mp4#t=9,24"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid4', 9, 17)">▶ La Traición de Fabián (00:09 - 00:17)</button>
+                <button class="btn-tiempo" onclick="irASegundo('vid4', 19, 24)">▶ Vuela la ojota (00:19 - 00:24)</button>
+            </div>
+            <div class="narracion">
+                La traición de Scar a Mufasa (versión Mataderos). Nuestro héroe queda colgado del borde del skatepark, esperando un rescate heroico. Aparece <b>Fabián</b>, le agarra las manos, le da esperanza... ¡y lo suelta a propósito! Caída libre garantizada. Y como si no fuera suficiente humillación, en el segundo intento se le sale la ojota en plena subida. Cero códigos, cien por ciento cine.
+            </div>
+        </div>
+
+        <!-- KAK5.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">La Tabla Humana y el Caos</span>
+            <video id="vid5" controls preload="metadata" src="KAK5.mp4#t=0,15"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid5', 0, 10)">▶ Posando modo tabla (00:00 - 00:10)</button>
+                <button class="btn-tiempo" onclick="irASegundo('vid5', 11, 15)">▶ El Casi-Accidente (00:11 - 00:15)</button>
+            </div>
+            <div class="narracion">
+                El detrás de escena de la famosa Tabla Humana. Vean cómo hacen falta cuatro pibes para mantener a <b>Fabián</b> desafiando la gravedad. Pero el clímax es en el segundo 12: apenas terminan la foto, lo sueltan como una bolsa de papas viejas. Fabián cae y arrastra al amigo de remera negra, que casi vuela de nuca adentro de la rampa. Coordinación perfecta para el desastre total.
+            </div>
+        </div>
+
+        <!-- KAK6.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">El Búnker Antiaéreo</span>
+            <video id="vid6" controls preload="metadata" src="KAK6.mp4#t=5,85"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid6', 5, 50)">▶ Viviendo bajo el pupitre (00:05 - 00:50)</button>
+                <button class="btn-tiempo" onclick="irASegundo('vid6', 115, 145)">▶ Asedio en la puerta (01:55 - 02:25)</button>
+            </div>
+            <div class="narracion">
+                Día de paro docente: mientras otros charlan tranquilos, acá tenemos a un ejemplar viviendo voluntariamente debajo de un pupitre como si fuera un búnker antiaéreo. Su única misión es sobrevivir a los proyectiles que lanzan sus propios compañeros. Supervivencia pura.
+            </div>
+        </div>
+
+        <!-- KAK7.mp4 -->
+        <div class="tarjeta">
+            <span class="etiqueta etiqueta-video">Nuketown en 4° Año</span>
+            <video id="vid7" controls preload="metadata" src="KAK7.mp4#t=20,40"></video>
+            <div class="controles-tiempo">
+                <button class="btn-tiempo" onclick="irASegundo('vid7', 20, 30)">▶ Salto de Parkour (00:20 - 00:30)</button>
+                <button class="btn-tiempo" onclick="irASegundo('vid7', 30, 42)">▶ Tiroteo por la ventana (00:30 - 00:42)</button>
+            </div>
+            <div class="narracion">
+                Cuando el recreo se transforma en el mapa Nuketown del Call of Duty. Miren ese parkour táctico saltando por encima de los pupitres en el segundo 22 para buscar munición y defender el aula desde la ventana. Es pura adrenalina escolar.
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>🔥 <b>Las Aventuras de los Chads</b> — Creado, editado y programado por el Camarógrafo Oficial del Grupo (4° Año) 🔥</p>
+    </footer>
+
+    <!-- SCRIPT PARA SALTAR DEL SEGUNDO X AL SEGUNDO Y EXACTOS -->
+    <script>
+        function irASegundo(idVideo, inicio, fin) {
+            const video = document.getElementById(idVideo);
+            video.currentTime = inicio;
+            video.play();
+
+            const checkTime = function() {
+                if (video.currentTime >= fin) {
+                    video.pause();
+                    video.removeEventListener('timeupdate', checkTime);
+                }
+            };
+            video.addEventListener('timeupdate', checkTime);
+        }
+    </script>
+
+</body>
+</html>
